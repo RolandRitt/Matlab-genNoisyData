@@ -1,6 +1,6 @@
 # Matlab-genNoisyData
 function to generate a dataset with m realisations of a random d-dimensional variable with given covariance matrix
-```
+```Matlab
   % keywords: covariance, random data, noisy data
   %
   % Purpose : generate a data set with m random data vectors with a
