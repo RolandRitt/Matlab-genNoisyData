@@ -22,7 +22,7 @@ function dataM = genCovData(covM, m)
 % Description :
 %   using code from:
 %       https://stats.stackexchange.com/questions/120179/generating-data-with-a-given-sample-covariance-matrix
-%
+%       see also: mvnrnd
 % Author : 
 %    Roland Ritt
 %
