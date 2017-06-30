@@ -119,4 +119,7 @@ figureGen;
 plot(data4(:,1))
 
 figureGen;
-plot(data4(:,1:30))
+plot(data4(:,1:30));
+title('Noisy dataset with given covariance matrix');
+grid on;
+hold on;
