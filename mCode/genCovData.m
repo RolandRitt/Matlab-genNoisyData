@@ -1,10 +1,13 @@
-function dataM = genCovData(covM, m)
+function dataM = genCovData(covM, m, y0)
 % Keywords: covariance, random data, noisy data
 %
 % Purpose : generate a data set with m random data vectors with a
-%           exactly the predefined covariance matrix 'covM';
+%           exactly the predefined covariance matrix 'covM'; optional a
+%           datavector can be given to generate a noisy data set for. In
+%           this case the generated noise is added to y0
 %
-% Syntax : dataM = genCovData(covM, m)
+% Syntax :  dataM = genCovData(covM, m)
+%           dataM = genCovData(covM, m, y0)
 %
 % Input Parameters :
 %           covM := covariancematrix of the output; a squared symmetric
@@ -12,6 +15,9 @@ function dataM = genCovData(covM, m)
 %           dimension of the random data vector
 %
 %           m := number of realisations of random data vector;
+%
+%           y0 := a column vector of size [dx1]; to this vector, the
+%           generated noise with given covariance is added.
 %           
 %
 % Return Parameters :
@@ -44,9 +50,22 @@ if r~=c
     error('The input argument covM has to be a square matrix');
 end
 
+if nargin <3
+    y0 = zeros(r,1);
+end
+
+[ry,cy] = size(y0);
+
+if ry~= r || cy~=1
+    error(['Input argument y0 must be of size [', num2str(c), 'x1]']);
+end
+
 %% generate the data set
 X = randn(m,r);
 X = bsxfun(@minus, X, mean(X));
 X =X /(chol(cov(X)));
 X = X * chol(covM);
-dataM = X';
+
+X0 = repmat(y0, 1, m);
+
+dataM = X0 + X';

@@ -92,9 +92,16 @@ covData4 = cov(data4');
 diff4 = covData - covData4;
 
 if(max(max(abs(diff4)))>eps*200)
-    error('test 2 went wrong');
+    error('test 4 went wrong');
 end
 
+data5 = genCovData(covData,m,y0);
+covData5 = cov(data5');
+diff5 = covData -covData5;
+
+if(max(max(abs(diff5)))>eps*200)
+    error('test 4 went wrong');
+end
 %% plot data
 figureGen;
 plot(y0);
