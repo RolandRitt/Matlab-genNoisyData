@@ -130,3 +130,9 @@ plot(data4(:,1:30));
 title('Noisy dataset with given covariance matrix');
 grid on;
 hold on;
+
+figureGen;
+plot(data5(:,1:30));
+title('Noisy dataset with given covariance matrix');
+grid on;
+hold on;
