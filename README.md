@@ -1,13 +1,16 @@
 # Matlab-genNoisyData
 function to generate a dataset with m realisations of a random d-dimensional variable with given covariance matrix
 ```Matlab
-function dataM = genCovData(covM, m)
-% keywords: covariance, random data, noisy data
+function dataM = genCovData(covM, m, y0)
+% Keywords: covariance, random data, noisy data
 %
 % Purpose : generate a data set with m random data vectors with a
-%           exactly the predefined covariance matrix 'covM';
+%           exactly the predefined covariance matrix 'covM'; optional a
+%           datavector can be given to generate a noisy data set for. In
+%           this case the generated noise is added to y0
 %
-% Syntax : dataM = genCovData(covM, m)
+% Syntax :  dataM = genCovData(covM, m)
+%           dataM = genCovData(covM, m, y0)
 %
 % Input Parameters :
 %           covM := covariancematrix of the output; a squared symmetric
@@ -15,6 +18,9 @@ function dataM = genCovData(covM, m)
 %           dimension of the random data vector
 %
 %           m := number of realisations of random data vector;
+%
+%           y0 := a column vector of size [dx1]; to this vector, the
+%           generated noise with given covariance is added.
 %           
 %
 % Return Parameters :
@@ -25,7 +31,7 @@ function dataM = genCovData(covM, m)
 % Description :
 %   using code from:
 %       https://stats.stackexchange.com/questions/120179/generating-data-with-a-given-sample-covariance-matrix
-%
+%       see also: mvnrnd
 % Author : 
 %    Roland Ritt
 %
